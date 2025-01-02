@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yes/No Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Yes/No Quiz</h2>
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. Do you crave sweets, bread, pasta, white rice, and/or potatoes?</p>
+                <label><input type="radio" name="q1" value="yes"> Yes</label>
+                <label><input type="radio" name="q1" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>2. Do you eat processed foods (TV dinners, lunchmeats, bacon, canned soup, snack bars) or fast foods at least three times a week?</p>
+                <label><input type="radio" name="q2" value="yes"> Yes</label>
+                <label><input type="radio" name="q2" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>3. Do you drink caffeinated beverages like coffee and tea more than twice daily?</p>
+                <label><input type="radio" name="q3" value="yes"> Yes</label>
+                <label><input type="radio" name="q3" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>4. Do you drink diet sodas or use artificial sweeteners at least once a day?</p>
+                <label><input type="radio" name="q4" value="yes"> Yes</label>
+                <label><input type="radio" name="q4" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>5. Do you sleep less than eight hours per day?</p>
+                <label><input type="radio" name="q5" value="yes"> Yes</label>
+                <label><input type="radio" name="q5" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>6. Do you drink less than 64 ounces of good, clean water daily?</p>
+                <label><input type="radio" name="q6" value="yes"> Yes</label>
+                <label><input type="radio" name="q6" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>7. Are you very sensitive to smoke, chemicals, or fumes in the environment?</p>
+                <label><input type="radio" name="q7" value="yes"> Yes</label>
+                <label><input type="radio" name="q7" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>8. Have you ever taken antibiotics, antidepressants, or other medications?</p>
+                <label><input type="radio" name="q8" value="yes"> Yes</label>
+                <label><input type="radio" name="q8" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>9. Have you ever taken birth control pills or other estrogens, such as hormone replacement therapy?</p>
+                <label><input type="radio" name="q9" value="yes"> Yes</label>
+                <label><input type="radio" name="q9" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>10. Do you have frequent yeast infections?</p>
+                <label><input type="radio" name="q10" value="yes"> Yes</label>
+                <label><input type="radio" name="q10" value="no"> No</label>
+            </div>
+            <!-- Add more questions following the same pattern as above -->
+            <button type="button" onclick="calculateResult()">Submit</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateResult() {
+            const form = document.getElementById('quiz-form');
+            const formData = new FormData(form);
+            let yesCount = 0;
+
+            for (let value of formData.values()) {
+                if (value === 'yes') {
+                    yesCount++;
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            if (yesCount >= 20) {
+                resultDiv.textContent = `You scored ${yesCount}. You will significantly benefit from detoxifying your body, which could lead to weight loss and improved health and vitality. It is strongly recommended that you look into different ways to detoxify the body.`;
+            } else if (yesCount >= 5) {
+                resultDiv.textContent = `You scored ${yesCount}. You will likely benefit from a detoxification program for improved health and vitality.`;
+            } else {
+                resultDiv.textContent = `You scored ${yesCount}. You might actually be free of toxic overload in the body and living a very healthy, toxin-free life. Good for you!`;
+            }
+        }
+    </script>
+</body>
+</html>
